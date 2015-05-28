@@ -154,11 +154,11 @@ public class APILDAPTestCase extends IdentityTestPOJO
 
       assertNull(session.getPersistenceManager().findUser("bbb"));
       assertNotNull(session.getPersistenceManager().findUser("aaa"));
-      assertNull(session.getPersistenceManager().findUser("aAa"));
+      assertNotNull(session.getPersistenceManager().findUser("aAa"));
 
       session.getAttributesManager().validatePassword(new SimpleUser("aAa"), "Password2000Toto5");
 
-      assertNull(session.getPersistenceManager().findUser("aAa"));
+      assertNotNull(session.getPersistenceManager().findUser("aAa"));
 
       commit();
    }

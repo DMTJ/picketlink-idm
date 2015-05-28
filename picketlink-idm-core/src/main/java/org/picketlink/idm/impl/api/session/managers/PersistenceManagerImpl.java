@@ -122,6 +122,7 @@ public class PersistenceManagerImpl extends AbstractManager implements Persisten
    {
       try
       {
+		 identityName = identityName.toLowerCase(); 
          checkNotNullArgument(identityName, "Identity name");
          checkObjectName(identityName);
 
@@ -165,6 +166,7 @@ public class PersistenceManagerImpl extends AbstractManager implements Persisten
    {
       try
       {
+         groupName = groupName.toLowerCase();
          checkNotNullArgument(groupName, "Group name");
          checkNotNullArgument(groupType, "Group type");
          checkObjectName(groupName);
@@ -207,6 +209,7 @@ public class PersistenceManagerImpl extends AbstractManager implements Persisten
 
    public String createGroupKey(String groupName, String groupType)
    {
+      groupName = groupName.toLowerCase();
       checkNotNullArgument(groupName, "Group name");
       checkNotNullArgument(groupType, "Group type");
       checkObjectName(groupName);
@@ -217,7 +220,7 @@ public class PersistenceManagerImpl extends AbstractManager implements Persisten
 
    public String createUserKey(String id)
    {
-      return id;
+      return id.toLowerCase();
    }
 
    public void removeUser(User user, boolean force) throws IdentityException

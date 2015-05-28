@@ -76,7 +76,7 @@ public class HibernateIdentityObject implements IdentityObject
 
    public HibernateIdentityObject(String name, HibernateIdentityObjectType identityType, HibernateRealm realm)
    {
-      this.name = name;
+      this.name = name.toLowerCase();
       this.identityType = identityType;
       this.realm = realm;
    }
@@ -98,7 +98,7 @@ public class HibernateIdentityObject implements IdentityObject
 
    public void setName(String name)
    {
-      this.name = name;
+      this.name = name.toLowerCase();
    }
 
    public HibernateIdentityObjectType getIdentityType()
@@ -305,7 +305,7 @@ public class HibernateIdentityObject implements IdentityObject
 
       IdentityObject that = (IdentityObject)o;
 
-      if (name != null ? !name.equals(that.getName()) : that.getName() != null)
+      if (name != null ? !name.equalsIgnoreCase(that.getName()) : that.getName() != null)
       {
          return false;
       }
@@ -320,7 +320,7 @@ public class HibernateIdentityObject implements IdentityObject
    @Override
    public int hashCode()
    {
-      int result = name != null ? name.hashCode() : 0;
+      int result = name != null ? name.toLowerCase().hashCode() : 0;
       result = 31 * result + (identityType != null ? identityType.hashCode() : 0);
       return result;
    }

@@ -55,7 +55,7 @@ public class SimpleIdentityObject implements IdentityObject, Serializable
          throw new IllegalArgumentException("type is null");
       }
 
-      this.name = name;
+      this.name = name.toLowerCase();
       this.id = id;
       this.type = type;
    }
@@ -71,7 +71,7 @@ public class SimpleIdentityObject implements IdentityObject, Serializable
          throw new IllegalArgumentException("type is null");
       }
 
-      this.name = name;
+      this.name = name.toLowerCase();
       this.type = type;
       this.id = null;
    }
@@ -116,7 +116,7 @@ public class SimpleIdentityObject implements IdentityObject, Serializable
 
       IdentityObject that = (IdentityObject)o;
 
-      if (name != null ? !name.equals(that.getName()) : that.getName() != null)
+      if (name != null ? !name.equalsIgnoreCase(that.getName()) : that.getName() != null)
       {
          return false;
       }
@@ -131,7 +131,7 @@ public class SimpleIdentityObject implements IdentityObject, Serializable
    @Override
    public int hashCode()
    {
-      int result = name != null ? name.hashCode() : 0;
+      int result = name != null ? name.toLowerCase().hashCode() : 0;
       result = 31 * result + (type != null ? type.hashCode() : 0);
       return result;
    }
