@@ -36,11 +36,11 @@ public class ModelTestCase extends TestCase
    {
 
       GroupKey key = new GroupKey(GroupKey.PREFIX + GroupKey.SEPARATOR + "groupTypeName" + GroupKey.SEPARATOR + "groupName");
-      assertEquals("groupName", key.getName());
+      assertEquals("groupName".toLowerCase(), key.getName());
       assertEquals("groupTypeName", key.getType());
 
       key = new GroupKey("groupName", "groupTypeName");
-      assertEquals("groupName", key.getName());
+      assertEquals("groupName".toLowerCase(), key.getName());
       assertEquals("groupTypeName", key.getType());
 
    }

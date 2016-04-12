@@ -150,7 +150,7 @@ public class IdentitySearchCriteriaImpl implements IdentitySearchCriteria, Ident
          throw new IllegalArgumentException("ID filter is null");
       }
 
-      this.filter = filter;
+      this.filter = filter.toLowerCase();
 
       return this;
    }

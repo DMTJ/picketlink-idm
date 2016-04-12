@@ -41,7 +41,7 @@ public class SimpleGroup implements Group, Serializable
 
    public SimpleGroup(String name, String groupType)
    {
-      this.name = name;
+      this.name = name.toLowerCase();
       this.groupType = groupType;
       this.id = new GroupKey(name, groupType).getKey();
 

@@ -49,7 +49,7 @@ public class GroupKey
          throw new IllegalArgumentException("type is null");
       }
 
-      this.name = name;
+      this.name = name.toLowerCase();
       this.type = type;
    }
 
@@ -68,7 +68,7 @@ public class GroupKey
             PREFIX + SEPARATOR + "groupType" + SEPARATOR + "name : " + id);
       }
 
-      name = parts[2];
+      name = parts[2].toLowerCase();
       type = parts[1];
    }
 

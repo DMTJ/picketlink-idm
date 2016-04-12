@@ -163,9 +163,9 @@ public class CommonIdentityStoreTest extends Assert
 
       // Check case sensitive checks
 
-      assertNull(testContext.getStore().findIdentityObject(testContext.getCtx(), "adam", IdentityTypeEnum.USER));
-      assertNull(testContext.getStore().findIdentityObject(testContext.getCtx(), "ADAM", IdentityTypeEnum.USER));
-      assertNull(testContext.getStore().findIdentityObject(testContext.getCtx(), "deVISIon3", IdentityTypeEnum.ORGANIZATION));
+      assertNotNull(testContext.getStore().findIdentityObject(testContext.getCtx(), "adam", IdentityTypeEnum.USER));
+      assertNotNull(testContext.getStore().findIdentityObject(testContext.getCtx(), "ADAM", IdentityTypeEnum.USER));
+      assertNotNull(testContext.getStore().findIdentityObject(testContext.getCtx(), "deVISIon3", IdentityTypeEnum.ORGANIZATION));
 
 
       testContext.commit();
@@ -503,8 +503,8 @@ public class CommonIdentityStoreTest extends Assert
          assertEquals(8, results.size());
 
          // Just check the first and the last one
-         assertEquals("Company1", ((List<IdentityObject>)results).get(0).getName());
-         assertEquals("Entity3", ((List<IdentityObject>)results).get(7).getName());
+         assertEquals("Company1".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
+         assertEquals("Entity3".toLowerCase(), ((List<IdentityObject>)results).get(7).getName());
 
 
          // And reverse order
@@ -517,8 +517,8 @@ public class CommonIdentityStoreTest extends Assert
          assertEquals(8, results.size());
 
          // Just check the first and the last one
-         assertEquals("Company1", ((List<IdentityObject>)results).get(7).getName());
-         assertEquals("Entity3", ((List<IdentityObject>)results).get(0).getName());
+         assertEquals("Company1".toLowerCase(), ((List<IdentityObject>)results).get(7).getName());
+         assertEquals("Entity3".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
 
 
 
@@ -537,8 +537,8 @@ public class CommonIdentityStoreTest extends Assert
                findIdentityObject(testContext.getCtx(), IdentityTypeEnum.USER, criteria);
 
             assertEquals(3, results.size());
-            assertEquals("Company1", ((List<IdentityObject>)results).get(0).getName());
-            assertEquals("Division1", ((List<IdentityObject>)results).get(2).getName());
+            assertEquals("Company1".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
+            assertEquals("Division1".toLowerCase(), ((List<IdentityObject>)results).get(2).getName());
 
             criteria = (IdentityObjectSearchCriteria)new IdentitySearchCriteriaImpl().sort(SortOrder.ASCENDING).page(3,1);
 
@@ -548,7 +548,7 @@ public class CommonIdentityStoreTest extends Assert
             assertEquals(1, results.size());
 
             assertEquals(1, results.size());
-            assertEquals("Division2", ((List<IdentityObject>)results).get(0).getName());
+            assertEquals("Division2".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
 
          }
 
@@ -572,7 +572,7 @@ public class CommonIdentityStoreTest extends Assert
          results = testContext.getStore().
                findIdentityObject(testContext.getCtx(), IdentityTypeEnum.USER, criteria);
          assertEquals(1, results.size());
-         assertEquals("Division1", ((List<IdentityObject>)results).get(0).getName());
+         assertEquals("Division1".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
 
          criteria = (IdentityObjectSearchCriteria)new IdentitySearchCriteriaImpl()
                .attributeValuesFilter("phone", new String[] {"777 777 77*", "666 666 66*"})
@@ -580,8 +580,8 @@ public class CommonIdentityStoreTest extends Assert
          results = testContext.getStore().
                findIdentityObject(testContext.getCtx(), IdentityTypeEnum.USER, criteria);
          assertEquals(2, results.size());
-         assertEquals("Division1", ((List<IdentityObject>)results).get(0).getName());
-         assertEquals("Division2", ((List<IdentityObject>)results).get(1).getName());
+         assertEquals("Division1".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
+         assertEquals("Division2".toLowerCase(), ((List<IdentityObject>)results).get(1).getName());
 
          criteria = (IdentityObjectSearchCriteria)new IdentitySearchCriteriaImpl()
                .attributeValuesFilter("phone", new String[] {"777 777 77*", "666 666 66*"})
@@ -589,7 +589,7 @@ public class CommonIdentityStoreTest extends Assert
          results = testContext.getStore().
                findIdentityObject(testContext.getCtx(), IdentityTypeEnum.USER, criteria);
          assertEquals(1, results.size());
-         assertEquals("Division2", ((List<IdentityObject>)results).get(0).getName());
+         assertEquals("Division2".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
 
 
 
@@ -616,9 +616,9 @@ public class CommonIdentityStoreTest extends Assert
                   findIdentityObject(testContext.getCtx(), IdentityTypeEnum.USER, criteria);
 
             assertEquals(3, results.size());
-            assertEquals("Company2", ((List<IdentityObject>)results).get(0).getName());
-            assertEquals("Division1", ((List<IdentityObject>)results).get(1).getName());
-            assertEquals("Division2", ((List<IdentityObject>)results).get(2).getName());
+            assertEquals("Company2".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
+            assertEquals("Division1".toLowerCase(), ((List<IdentityObject>)results).get(1).getName());
+            assertEquals("Division2".toLowerCase(), ((List<IdentityObject>)results).get(2).getName());
 
             // Test page2
             criteria = (IdentityObjectSearchCriteria)new IdentitySearchCriteriaImpl()
@@ -627,7 +627,7 @@ public class CommonIdentityStoreTest extends Assert
                   findIdentityObject(testContext.getCtx(), IdentityTypeEnum.USER, criteria);
 
             assertEquals(1, results.size());
-            assertEquals("Division3", ((List<IdentityObject>)results).get(0).getName());
+            assertEquals("Division3".toLowerCase(), ((List<IdentityObject>)results).get(0).getName());
          }
       }
 

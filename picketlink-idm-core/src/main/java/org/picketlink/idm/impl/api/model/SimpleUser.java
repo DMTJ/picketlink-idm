@@ -37,7 +37,7 @@ public class SimpleUser implements User, Serializable
 
    public SimpleUser(String id)
    {
-      this.id = id;
+      this.id = id.toLowerCase();
    }
 
    public String getId()

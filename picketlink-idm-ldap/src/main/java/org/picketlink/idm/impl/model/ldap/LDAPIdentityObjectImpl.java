@@ -45,7 +45,7 @@ public class LDAPIdentityObjectImpl implements IdentityObject, Serializable
    public LDAPIdentityObjectImpl(String dn, String id, IdentityObjectType type)
    {
       this.dn = dn;
-      this.id = id;
+      this.id = id.toLowerCase();
       this.type = type;
    }
 
@@ -99,7 +99,7 @@ public class LDAPIdentityObjectImpl implements IdentityObject, Serializable
 
       IdentityObject that = (IdentityObject)o;
 
-      if (id != null ? !id.equals(that.getName()) : that.getName() != null)
+      if (id != null ? !id.equalsIgnoreCase(that.getName()) : that.getName() != null)
       {
          return false;
       }
@@ -114,7 +114,7 @@ public class LDAPIdentityObjectImpl implements IdentityObject, Serializable
    @Override
    public int hashCode()
    {
-      int result = id != null ? id.hashCode() : 0;
+      int result = id != null ? id.toLowerCase().hashCode() : 0;
       result = 31 * result + (type != null ? type.hashCode() : 0);
       return result;
    }

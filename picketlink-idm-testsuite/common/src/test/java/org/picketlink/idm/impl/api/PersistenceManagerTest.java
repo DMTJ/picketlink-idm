@@ -108,7 +108,7 @@ public class PersistenceManagerTest extends Assert
 
       assertNotNull(group1);
       assertEquals(group1.getGroupType(), ORGANIZATION);
-      assertEquals(group1.getName(), "groupName1");
+      assertEquals(group1.getName(), "groupName1".toLowerCase());
 
       String group1Id = session.getPersistenceManager().createGroupKey("groupName1", ORGANIZATION);
 
@@ -118,7 +118,7 @@ public class PersistenceManagerTest extends Assert
 
       assertNotNull(group1);
       assertEquals(group1.getGroupType(), ORGANIZATION);
-      assertEquals(group1.getName(), "groupName1");
+      assertEquals(group1.getName(), "groupName1".toLowerCase());
 
       session.getPersistenceManager().createGroup("groupName2", ORGANIZATION);
       session.getPersistenceManager().createGroup("groupName3", PROJECT);
